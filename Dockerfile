@@ -5,6 +5,8 @@ ENV ASPNETCORE_URLS=http://*:5000:
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
+RUN curl -sL https://deb.nodesource.com/setup_10.x |  bash -
+RUN apt-get install -y nodejs
 COPY ["Azure_Container_instance.csproj", "./"]
 RUN dotnet restore "Azure_Container_instance.csproj"
 COPY . .
